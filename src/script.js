@@ -23,3 +23,23 @@ function changeTime() {
 }
 changeTime();
 setInterval(changeTime, 1000);
+
+let countrySelector = document.querySelector("#countries");
+
+function showTZ(event) {
+  selectedCity = event.target.value;
+  tzSelectedcity = moment().tz(selectedCity);
+
+  let displayedCountry = document.querySelector("#country");
+  displayedCountry.innerHTML = `<div class="country" id="">
+          <div class="left">
+            <div class="country-name">${selectedCity}</div>
+            <div class="date">${tzSelectedcity.format("MMMM Do YYYY")}</div>
+          </div>
+          <div class="time">${tzSelectedcity.format(
+            "hh:mm:ss"
+          )} <span>${tzSelectedcity.format("A")}</span></div>
+        </div>`;
+}
+
+countrySelector.addEventListener("change", showTZ);
