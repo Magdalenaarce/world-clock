@@ -28,6 +28,9 @@ let countrySelector = document.querySelector("#countries");
 
 function showTZ(event) {
   selectedCity = event.target.value;
+  if (selectedCity === "current") {
+    selectedCity = moment.tz.guess();
+  }
   tzSelectedcity = moment().tz(selectedCity);
 
   let displayedCountry = document.querySelector("#country");
